@@ -35,9 +35,6 @@
 #aside-content > .card-widget:nth-child(2){
   background: rgba(255,255,255,.5);
 }
-#aside-content > .card-widget{
-  background: rgba(255,255,255,.5);
-}
 #aside-content .card-widget{
-  background: rgba(255,255,255,.5);
+  background: rgba(255,255,255,.7);
 }
