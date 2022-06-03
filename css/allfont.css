@@ -1,0 +1,43 @@
+#nav a:hover {
+  color: #5a5a5a;
+}
+#nav a {
+  color: #000;
+}
+#nav .site-page{
+  text-shadow: none;
+  font-size: 0.85em;
+}
+#page-header #site-title {
+  color: #000;
+}
+#page-header #site-subtitle{
+  color: #000;  
+}
+#subtitle, #page-header #scroll-down .scroll-down-effects {
+  text-shadow: none;
+}
+#page-header #site-title, #page-header #site-subtitle, #page-header #scroll-down .scroll-down-effects{
+  text-shadow: none;  
+}
+#footer-wrap a {
+  color: #000;
+}
+#footer-wrap{
+  color: #000;
+}
+#nav #site-name{
+  text-shadow: none;
+}
+#aside-content > .card-widget:first-child{
+  background: rgba(255,255,255,.5);
+}
+#aside-content > .card-widget:nth-child(2){
+  background: rgba(255,255,255,.5);
+}
+#aside-content > .card-widget{
+  background: rgba(255,255,255,.5);
+}
+#aside-content .card-widget{
+  background: rgba(255,255,255,.5);
+}
