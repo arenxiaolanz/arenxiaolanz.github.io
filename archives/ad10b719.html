@@ -1,0 +1,834 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第一章 TS快速入门 | Ren の Blog</title><meta name="keywords" content="TypeScript"><meta name="author" content="RenXiaolan"><meta name="copyright" content="RenXiaolan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="TS快速入门">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第一章 TS快速入门">
+<meta property="og:url" content="https://arenxiaolanz.github.io/archives/ad10b719.html">
+<meta property="og:site_name" content="Ren の Blog">
+<meta property="og:description" content="TS快速入门">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://arenxiaolanz.github.io/img/ts.jpg">
+<meta property="article:published_time" content="2022-06-27T02:02:04.000Z">
+<meta property="article:modified_time" content="2022-08-20T02:08:25.846Z">
+<meta property="article:author" content="RenXiaolan">
+<meta property="article:tag" content="TypeScript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://arenxiaolanz.github.io/img/ts.jpg"><link rel="shortcut icon" href="/img/faviconyellow.png"><link rel="canonical" href="https://arenxiaolanz.github.io/archives/ad10b719"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="code-O4DN1PdDUm"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":60,"position":"top","messagePrev":"该文章最后更新于","messageNext":"天前，文章内容可能已经过时，请优先查看最新文章！"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: RenXiaolan","link":"链接: ","source":"来源: Ren の Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '第一章 TS快速入门',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-08-20 10:08:25'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/cursors.css"><link rel="stylesheet" href="/css/bg_opacity.css"><link rel="stylesheet" href="/css/allfont.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/bgyellow.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-music"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-video"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/ts.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Ren の Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-music"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-video"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">第一章 TS快速入门</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-27T02:02:04.000Z" title="发表于 2022-06-27 10:02:04">2022-06-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-08-20T02:08:25.846Z" title="更新于 2022-08-20 10:08:25">2022-08-20</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="第一章 TS快速入门"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="第一章-快速入门"><a href="#第一章-快速入门" class="headerlink" title="第一章 快速入门"></a>第一章 快速入门</h1><h2 id="0、TypeScript简介"><a href="#0、TypeScript简介" class="headerlink" title="0、TypeScript简介"></a>0、TypeScript简介</h2><ol>
+<li><p>TypeScript是JavaScript的超集。</p>
+</li>
+<li><p>它对JS进行了扩展，向JS中引入了类型的概念，并添加了许多新的特性。</p>
+</li>
+<li><p>TS代码需要通过编译器编译为JS，然后再交由JS解析器执行。</p>
+</li>
+<li><p>TS完全兼容JS，换言之，任何的JS代码都可以直接当成JS使用。</p>
+</li>
+<li><p>相较于JS而言，TS拥有了静态类型，更加严格的语法，更强大的功能；TS可以在代码执行前就完成代码的检查，减小了运行时异常的出现的几率；TS代码可以编译为任意版本的JS代码，可有效解决不同JS运行环境的兼容问题；同样的功能，TS的代码量要大于JS，但由于TS的代码结构更加清晰，变量类型更加明确，在后期代码的维护中TS却远远胜于JS。</p>
+</li>
+</ol>
+<h2 id="1、TypeScript-开发环境搭建"><a href="#1、TypeScript-开发环境搭建" class="headerlink" title="1、TypeScript 开发环境搭建"></a>1、TypeScript 开发环境搭建</h2><ol>
+<li> 下载Node.js </li>
+</ol>
+<ul>
+<li>64位：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://nodejs.org/dist/v14.15.1/node-v14.15.1-x64.msi">https://nodejs.org/dist/v14.15.1/node-v14.15.1-x64.msi</a></li>
+<li>32位：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://nodejs.org/dist/v14.15.1/node-v14.15.1-x86.msi">https://nodejs.org/dist/v14.15.1/node-v14.15.1-x86.msi</a></li>
+</ul>
+<ol start="2">
+<li><p> 安装Node.js </p>
+</li>
+<li><p> 使用npm全局安装typescript </p>
+</li>
+</ol>
+<ul>
+<li><p>进入命令行</p>
+</li>
+<li><p>输入：npm i -g typescript</p>
+</li>
+</ul>
+<ol start="4">
+<li><p> 创建一个ts文件 </p>
+</li>
+<li><p> 使用tsc对ts文件进行编译 </p>
+</li>
+</ol>
+<ul>
+<li><p> 进入命令行 </p>
+</li>
+<li><p> 进入ts文件所在目录 </p>
+</li>
+<li><p> 执行命令：tsc xxx.ts </p>
+</li>
+</ul>
+<h2 id="2、基本类型"><a href="#2、基本类型" class="headerlink" title="2、基本类型"></a>2、基本类型</h2><ul>
+<li><p>类型声明 </p>
+<ul>
+<li><p> 类型声明是TS非常重要的一个特点 </p>
+</li>
+<li><p> 通过类型声明可以指定TS中变量（参数、形参）的类型 </p>
+</li>
+<li><p> 指定类型后，当为变量赋值时，TS编译器会自动检查值是否符合类型声明，符合则赋值，否则报错 </p>
+</li>
+<li><p> 简而言之，类型声明给变量设置了类型，使得变量只能存储某种类型的值 </p>
+</li>
+<li><p> 语法： </p>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> 变量: 类型;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> 变量: 类型 = 值;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">参数: 类型, 参数: 类型</span>): 类型</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li><p>自动类型判断 </p>
+<ul>
+<li><p>TS拥有自动的类型判断机制</p>
+</li>
+<li><p>当对变量的声明和赋值是同时进行的，TS编译器会自动判断变量的类型</p>
+</li>
+<li><p>所以如果你的变量的声明和赋值时同时进行的，可以省略掉类型声明</p>
+</li>
+</ul>
+</li>
+<li><p> 类型：  </p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>例子</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>number</td>
+<td>1, -33, 2.5</td>
+<td>任意数字</td>
+</tr>
+<tr>
+<td>string</td>
+<td>‘hi’, “hi”, <code>hi</code></td>
+<td>任意字符串</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>true、false</td>
+<td>布尔值true或false</td>
+</tr>
+<tr>
+<td>字面量</td>
+<td>其本身</td>
+<td>限制变量的值就是该字面量的值</td>
+</tr>
+<tr>
+<td>any</td>
+<td>*</td>
+<td>任意类型</td>
+</tr>
+<tr>
+<td>unknown</td>
+<td>*</td>
+<td>类型安全的any</td>
+</tr>
+<tr>
+<td>void</td>
+<td>空值（undefined）</td>
+<td>没有值（或undefined）</td>
+</tr>
+<tr>
+<td>never</td>
+<td>没有值</td>
+<td>不能是任何值</td>
+</tr>
+<tr>
+<td>object</td>
+<td>{name:’孙悟空’}</td>
+<td>任意的JS对象</td>
+</tr>
+<tr>
+<td>array</td>
+<td>[1,2,3]</td>
+<td>任意JS数组</td>
+</tr>
+<tr>
+<td>tuple</td>
+<td>[4,5]</td>
+<td>元素，TS新增类型，固定长度数组</td>
+</tr>
+<tr>
+<td>enum</td>
+<td>enum{A, B}</td>
+<td>枚举，TS中新增类型</td>
+</tr>
+</tbody></table>
+</li>
+<li><h2 id="number"><a href="#number" class="headerlink" title="number "></a>number </h2><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> decimal: <span class="built_in">number</span> = <span class="number">6</span>;</span><br><span class="line"><span class="keyword">let</span> hex: <span class="built_in">number</span> = <span class="number">0xf00d</span>;</span><br><span class="line"><span class="keyword">let</span> binary: <span class="built_in">number</span> = <span class="number">0b1010</span>;</span><br><span class="line"><span class="keyword">let</span> octal: <span class="built_in">number</span> = <span class="number">0o744</span>;</span><br><span class="line"><span class="keyword">let</span> big: bigint = <span class="number">100n</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ul>
+<li><h2 id="boolean"><a href="#boolean" class="headerlink" title="boolean "></a>boolean </h2><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> isDone: <span class="built_in">boolean</span> = <span class="literal">false</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ul>
+<li><h2 id="string"><a href="#string" class="headerlink" title="string "></a>string </h2><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> color: <span class="built_in">string</span> = <span class="string">&quot;blue&quot;</span>;</span><br><span class="line">color = <span class="string">&#x27;red&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> fullName: <span class="built_in">string</span> = <span class="string">`Bob Bobbington`</span>;</span><br><span class="line"><span class="keyword">let</span> age: <span class="built_in">number</span> = <span class="number">37</span>;</span><br><span class="line"><span class="keyword">let</span> sentence: <span class="built_in">string</span> = <span class="string">`Hello, my name is <span class="subst">$&#123;fullName&#125;</span>.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">I&#x27;ll be <span class="subst">$&#123;age + <span class="number">1</span>&#125;</span> years old next month.`</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ul>
+<li>字面量 <ul>
+<li> 也可以使用字面量去指定变量的类型，通过字面量可以确定变量的取值范围 </li>
+<li><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> color: <span class="string">&#x27;red&#x27;</span> | <span class="string">&#x27;blue&#x27;</span> | <span class="string">&#x27;black&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> num: <span class="number">1</span> | <span class="number">2</span> | <span class="number">3</span> | <span class="number">4</span> | <span class="number">5</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><h2 id="any"><a href="#any" class="headerlink" title="any "></a>any </h2><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> d: <span class="built_in">any</span> = <span class="number">4</span>;</span><br><span class="line">d = <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line">d = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ul>
+<li><h2 id="unknown"><a href="#unknown" class="headerlink" title="unknown "></a>unknown </h2><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> notSure: unknown = <span class="number">4</span>;</span><br><span class="line">notSure = <span class="string">&#x27;hello&#x27;</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ul>
+<li><h2 id="void"><a href="#void" class="headerlink" title="void "></a>void </h2><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> unusable: <span class="built_in">void</span> = <span class="literal">undefined</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ul>
+<li><h2 id="never"><a href="#never" class="headerlink" title="never "></a>never </h2><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">error</span>(<span class="params">message: <span class="built_in">string</span></span>): <span class="title">never</span> </span>&#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(message);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ul>
+<li><h2 id="object（没啥用）"><a href="#object（没啥用）" class="headerlink" title="object（没啥用） "></a>object（没啥用） </h2><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj: <span class="built_in">object</span> = &#123;&#125;;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ul>
+<li><h2 id="array"><a href="#array" class="headerlink" title="array "></a>array </h2><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> list: <span class="built_in">number</span>[] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> list: <span class="built_in">Array</span>&lt;<span class="built_in">number</span>&gt; = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ul>
+<li><h2 id="tuple"><a href="#tuple" class="headerlink" title="tuple "></a>tuple </h2><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> x: [<span class="built_in">string</span>, <span class="built_in">number</span>];</span><br><span class="line">x = [<span class="string">&quot;hello&quot;</span>, <span class="number">10</span>];</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ul>
+<li><h2 id="enum"><a href="#enum" class="headerlink" title="enum "></a>enum </h2><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">enum</span> Color &#123;</span><br><span class="line">  Red,</span><br><span class="line">  Green,</span><br><span class="line">  Blue,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> c: Color = Color.Green;</span><br><span class="line"></span><br><span class="line"><span class="built_in">enum</span> Color &#123;</span><br><span class="line">  Red = <span class="number">1</span>,</span><br><span class="line">  Green,</span><br><span class="line">  Blue,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> c: Color = Color.Green;</span><br><span class="line"></span><br><span class="line"><span class="built_in">enum</span> Color &#123;</span><br><span class="line">  Red = <span class="number">1</span>,</span><br><span class="line">  Green = <span class="number">2</span>,</span><br><span class="line">  Blue = <span class="number">4</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> c: Color = Color.Green;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ul>
+<li>类型断言 <ul>
+<li>有些情况下，变量的类型对于我们来说是很明确，但是TS编译器却并不清楚，此时，可以通过类型断言来告诉编译器变量的类型，断言有两种形式： <ul>
+<li><h2 id="第一种"><a href="#第一种" class="headerlink" title="第一种 "></a>第一种 </h2><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> someValue: unknown = <span class="string">&quot;this is a string&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> strLength: <span class="built_in">number</span> = (someValue <span class="keyword">as</span> <span class="built_in">string</span>).length;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>  -  第二种 
+     -  
+</code></pre>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> someValue: unknown = <span class="string">&quot;this is a string&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> strLength: <span class="built_in">number</span> = (&lt;<span class="built_in">string</span>&gt;someValue).length;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="3、编译选项"><a href="#3、编译选项" class="headerlink" title="3、编译选项"></a>3、编译选项</h2><ul>
+<li><p>自动编译文件 </p>
+<ul>
+<li><p> 编译文件时，使用 -w 指令后，TS编译器会自动监视文件的变化，并在文件发生变化时对文件进行重新编译。 </p>
+</li>
+<li><p> 示例： </p>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">tsc xxx.ts <span class="literal">-w</span></span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li><p>自动编译整个项目 </p>
+<ul>
+<li><p> 如果直接使用tsc指令，则可以自动将当前项目下的所有ts文件编译为js文件。 </p>
+</li>
+<li><p> 但是能直接使用tsc命令的前提时，要先在项目根目录下创建一个ts的配置文件 tsconfig.json </p>
+</li>
+<li><p> tsconfig.json是一个JSON文件，添加配置文件后，只需只需 tsc 命令即可完成对整个项目的编译 </p>
+</li>
+<li><p>配置选项： </p>
+<ul>
+<li><p><code>include </code></p>
+<ol>
+<li><p> 定义希望被编译文件所在的目录 </p>
+</li>
+<li><p> 默认值：[“**/*”] </p>
+</li>
+<li><p> 示例：     -  </p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;include&quot;</span>:[<span class="string">&quot;src/**/*&quot;</span>, <span class="string">&quot;tests/**/*&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">// ** 表示任意目录，* 表示任意文件</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>上述示例中，所有src目录和tests目录下的文件都会被编译 </p>
+</blockquote>
+<pre><code>  -  `exclude `
+
+     1.  定义需要排除在外的目录 
+
+     1.  默认值：`[&quot;node_modules&quot;, &quot;bower_components&quot;, &quot;jspm_packages&quot;] `
+
+     1.  示例： 
+        -  
+</code></pre>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;exclude&quot;</span>: [<span class="string">&quot;./src/hello/**/*&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>上述示例中，src下hello目录下的文件都不会被编译 </p>
+</blockquote>
+<pre><code>  -  `extends `
+
+     1.  定义被继承的配置文件 
+
+     1.  示例： 
+
+        -  
+</code></pre>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;extends&quot;</span>: <span class="string">&quot;./configs/base&quot;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上述示例中，当前配置文件中会自动包含config目录下base.json中的所有配置信息 </p>
+</blockquote>
+<pre><code>  -  `files `
+
+     1.  指定被编译文件的列表，只有需要编译的文件少时才会用到 
+
+     1.  示例： 
+
+        -  
+</code></pre>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;files&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;core.ts&quot;</span>,</span><br><span class="line">    <span class="string">&quot;sys.ts&quot;</span>,</span><br><span class="line">    <span class="string">&quot;types.ts&quot;</span>,</span><br><span class="line">    <span class="string">&quot;scanner.ts&quot;</span>,</span><br><span class="line">    <span class="string">&quot;parser.ts&quot;</span>,</span><br><span class="line">    <span class="string">&quot;utilities.ts&quot;</span>,</span><br><span class="line">    <span class="string">&quot;binder.ts&quot;</span>,</span><br><span class="line">    <span class="string">&quot;checker.ts&quot;</span>,</span><br><span class="line">    <span class="string">&quot;tsc.ts&quot;</span></span><br><span class="line">  ]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>列表中的文件都会被TS编译器所编译 </p>
+</blockquote>
+<pre><code>     -  `compilerOptions `
+
+        -  编译选项是配置文件中非常重要也比较复杂的配置选项 
+
+        -  在compilerOptions中包含多个子选项，用来完成对编译
+</code></pre>
+<p>的配置 </p>
+<pre><code>           -  项目选项 
+
+              -  `target `
+
+                 -  设置ts代码编译的目标版本 
+
+                 -  可选值： 
+
+                    - `ES3（默认）、ES5、ES6/ES2015、ES7/ES2016、ES2017、ES2018、ES2019、ES2020、ESNext`
+
+                 -  示例： 
+                    -  
+</code></pre>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;target&quot;</span>: <span class="string">&quot;ES6&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如上设置，我们所编写的ts代码将会被编译为ES6版本的js代码 </p>
+</blockquote>
+<pre><code>           -  `lib `
+              -  指定代码运行时所包含的库（宿主环境） 
+
+              -  可选值： 
+
+                 - `ES5、ES6/ES2015、ES7/ES2016、ES2017、ES2018、ES2019、ES2020、ESNext、DOM、WebWorker、ScriptHost ......`
+
+              -  示例： 
+                    -  
+</code></pre>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;target&quot;</span>: <span class="string">&quot;ES6&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;lib&quot;</span>: [<span class="string">&quot;ES6&quot;</span>, <span class="string">&quot;DOM&quot;</span>],</span><br><span class="line">    <span class="attr">&quot;outDir&quot;</span>: <span class="string">&quot;dist&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;outFile&quot;</span>: <span class="string">&quot;dist/aa.js&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>              -  `module `
+
+                 -  设置编译后代码使用的模块化系统 
+
+                 -  可选值： 
+
+                    - `CommonJS、UMD、AMD、System、ES2020、ESNext、None`
+
+                 -  示例： 
+                    -  
+</code></pre>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;module&quot;</span>: <span class="string">&quot;CommonJS&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>              -  `outDir `
+
+                 -  编译后文件的所在目录 
+
+                 -  默认情况下，编译后的js文件会和ts文件位于相同的目录，设置outDir后可以改变编译后文件的位置 
+
+                 -  示例： 
+</code></pre>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;outDir&quot;</span>: <span class="string">&quot;dist&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>设置后编译后的js文件将会生成到dist目录 </p>
+</blockquote>
+<pre><code>              - `outFile `
+
+                 -  将所有的文件编译为一个js文件 
+
+                 -  默认会将所有的编写在全局作用域中的代码合并为一个js文件，如果module制定了None、System或AMD则会将模块一起合并到文件之中 
+
+                 -  示例： 
+</code></pre>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;outFile&quot;</span>: <span class="string">&quot;dist/app.js&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>              -  `rootDir `
+
+                 -  指定代码的根目录，默认情况下编译后文件的目录结构会以最长的公共目录为根目录，通过rootDir可以手动指定根目录 
+
+                 -  示例： 
+</code></pre>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;rootDir&quot;</span>: <span class="string">&quot;./src&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>              -  `allowJs `
+
+                 - 是否对js文件编译
+
+              -  `checkJs `
+
+                 -  是否对js文件进行检查 
+
+                 -  示例： 
+</code></pre>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;allowJs&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">&quot;checkJs&quot;</span>: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>              -  `removeComments `
+
+                 - 是否删除注释
+
+                 - 默认值：false
+
+              - ` noEmit `
+
+                 - 不对代码进行编译
+
+                 - 默认值：false
+
+              -  `sourceMap `
+
+                 - 是否生成sourceMap
+
+                 - 默认值：false
+
+           -  严格检查 
+
+              - `strict `
+
+                 - 启用所有的严格检查，默认值为true，设置后相当于开启了所有的严格检查
+
+              - `alwaysStrict `
+ 
+                 - 总是以严格模式对代码进行编译
+
+              - `noImplicitAny `
+
+                 - 禁止隐式的any类型
+
+              - `noImplicitThis `
+
+                 - 禁止类型不明确的this
+
+              - `strictBindCallApply `
+
+                 - 严格检查bind、call和apply的参数列表
+
+              - `strictFunctionTypes `
+
+                 - 严格检查函数的类型
+
+              - `strictNullChecks `
+
+                 - 严格的空值检查
+
+              - `strictPropertyInitialization `
+
+                 - 严格检查属性是否初始化
+
+           -  额外检查 
+
+              - `noFallthroughCasesInSwitch `
+
+                 - 检查switch语句包含正确的break
+
+              - `noImplicitReturns `
+
+                 - 检查函数没有隐式的返回值
+
+              - `noUnusedLocals `
+
+                 - 检查未使用的局部变量
+
+              - `noUnusedParameters `
+
+                 - 检查未使用的参数
+
+           -  高级 
+
+              - `allowUnreachableCode `
+
+                 - 检查不可达代码
+
+                 - 可选值： 
+
+                    - true，忽略不可达代码
+
+                    - false，不可达代码将引起错误
+
+              - `noEmitOnError `
+
+                 - 有错误的情况下不进行编译
+
+                 - 默认值：false
+</code></pre>
+<h2 id="4、webpack"><a href="#4、webpack" class="headerlink" title="4、webpack"></a>4、webpack</h2><ul>
+<li><p> 通常情况下，实际开发中我们都需要使用构建工具对代码进行打包，TS同样也可以结合构建工具一起使用，下边以webpack为例介绍一下如何结合构建工具使用TS。 </p>
+</li>
+<li><p>步骤： </p>
+<ol>
+<li> 初始化项目 </li>
+</ol>
+<pre><code>- 进入项目根目录，执行命令 `npm init -y` 
+
+   - 主要作用：创建package.json文件
+</code></pre>
+<ol start="2">
+<li> 下载构建工具 </li>
+</ol>
+<pre><code>- `npm i -D webpack webpack-cli webpack-dev-server typescript ts-loader clean-webpack-plugin` 
+
+   - 共安装了7个包 
+
+      - webpack 
+
+         - 构建工具webpack
+
+      - webpack-cli 
+
+         - webpack的命令行工具
+
+      - webpack-dev-server 
+
+         - webpack的开发服务器
+
+      - typescript 
+
+         - ts编译器
+
+      - ts-loader 
+
+         - ts加载器，用于在webpack中编译ts文件
+
+      - html-webpack-plugin 
+
+         - webpack中html插件，用来自动创建html文件
+
+      - clean-webpack-plugin 
+
+         - webpack中的清除插件，每次构建都会先清除目录
+</code></pre>
+<ol start="3">
+<li> 根目录下创建webpack的配置文件webpack.config.js </li>
+</ol>
+<pre><code>-  
+</code></pre>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">&quot;html-webpack-plugin&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; CleanWebpackPlugin &#125; = <span class="built_in">require</span>(<span class="string">&quot;clean-webpack-plugin&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    <span class="attr">optimization</span>:&#123;</span><br><span class="line">        <span class="attr">minimize</span>: <span class="literal">false</span> <span class="comment">// 关闭代码压缩，可选</span></span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="attr">entry</span>: <span class="string">&quot;./src/index.ts&quot;</span>,</span><br><span class="line">    </span><br><span class="line">    <span class="attr">devtool</span>: <span class="string">&quot;inline-source-map&quot;</span>,</span><br><span class="line">    </span><br><span class="line">    <span class="attr">devServer</span>: &#123;</span><br><span class="line">        <span class="attr">contentBase</span>: <span class="string">&#x27;./dist&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="attr">output</span>: &#123;</span><br><span class="line">        <span class="attr">path</span>: path.resolve(__dirname, <span class="string">&quot;dist&quot;</span>),</span><br><span class="line">        <span class="attr">filename</span>: <span class="string">&quot;bundle.js&quot;</span>,</span><br><span class="line">        <span class="attr">environment</span>: &#123;</span><br><span class="line">            <span class="attr">arrowFunction</span>: <span class="literal">false</span> <span class="comment">// 关闭webpack的箭头函数，可选</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="attr">resolve</span>: &#123;</span><br><span class="line">        <span class="attr">extensions</span>: [<span class="string">&quot;.ts&quot;</span>, <span class="string">&quot;.js&quot;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    </span><br><span class="line">    <span class="attr">module</span>: &#123;</span><br><span class="line">        <span class="attr">rules</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">test</span>: <span class="regexp">/\.ts$/</span>,</span><br><span class="line">                use: &#123;</span><br><span class="line">                   <span class="attr">loader</span>: <span class="string">&quot;ts-loader&quot;</span>     </span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="attr">plugins</span>: [</span><br><span class="line">        <span class="keyword">new</span> CleanWebpackPlugin(),</span><br><span class="line">        <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">            <span class="attr">title</span>:<span class="string">&#x27;TS测试&#x27;</span></span><br><span class="line">        &#125;),</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="4">
+<li> 根目录下创建tsconfig.json，配置可以根据自己需要       -  <figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;target&quot;</span>: <span class="string">&quot;ES2015&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;module&quot;</span>: <span class="string">&quot;ES2015&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;strict&quot;</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<ol start="5">
+<li> 修改package.json添加如下配置       -  <figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  ...略...</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;test&quot;</span>: <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;build&quot;</span>: <span class="string">&quot;webpack&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;start&quot;</span>: <span class="string">&quot;webpack serve --open chrome.exe&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  ...略...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<ol start="6">
+<li> 在src下创建ts文件，并在并命令行执行<code>npm run build</code>对代码进行编译，或者执行<code>npm start</code>来启动开发服务器 </li>
+</ol>
+<h2 id="5、Babel"><a href="#5、Babel" class="headerlink" title="5、Babel"></a>5、Babel</h2><ul>
+<li>经过一系列的配置，使得TS和webpack已经结合到了一起，除了webpack，开发中还经常需要结合babel来对代码进行转换以使其可以兼容到更多的浏览器，在上述步骤的基础上，通过以下步骤再将babel引入到项目中。 <ol>
+<li>安装依赖包：     - <code>npm i -D @babel/core @babel/preset-env babel-loader core-js</code>    - 共安装了4个包，分别是： <ul>
+<li>@babel/core <ul>
+<li>babel的核心工具</li>
+</ul>
+</li>
+<li>@babel/preset-env <ul>
+<li>babel的预定义环境</li>
+</ul>
+</li>
+<li><a href="/babel-loader">@babel-loader </a>  <ul>
+<li>babel在webpack中的加载器</li>
+</ul>
+</li>
+<li>core-js <ul>
+<li>core-js用来使老版本的浏览器支持新版ES语法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li> 修改webpack.config.js配置文件     -  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">...略...</span><br><span class="line"><span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">test</span>: <span class="regexp">/\.ts$/</span>,</span><br><span class="line">            use: [</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">loader</span>: <span class="string">&quot;babel-loader&quot;</span>,</span><br><span class="line">                    <span class="attr">options</span>:&#123;</span><br><span class="line">                        <span class="attr">presets</span>: [</span><br><span class="line">                            [</span><br><span class="line">                                <span class="string">&quot;@babel/preset-env&quot;</span>,</span><br><span class="line">                                &#123;</span><br><span class="line">                                    <span class="string">&quot;targets&quot;</span>:&#123;</span><br><span class="line">                                        <span class="string">&quot;chrome&quot;</span>: <span class="string">&quot;58&quot;</span>,</span><br><span class="line">                                        <span class="string">&quot;ie&quot;</span>: <span class="string">&quot;11&quot;</span></span><br><span class="line">                                    &#125;,</span><br><span class="line">                                    <span class="string">&quot;corejs&quot;</span>:<span class="string">&quot;3&quot;</span>,</span><br><span class="line">                                    <span class="string">&quot;useBuiltIns&quot;</span>: <span class="string">&quot;usage&quot;</span></span><br><span class="line">                                &#125;</span><br><span class="line">                            ]</span><br><span class="line">                        ]</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">loader</span>: <span class="string">&quot;ts-loader&quot;</span>,</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line">...略...</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+<pre><code>  -  如此一来，使用ts编译后的文件将会再次被babel处理，使得代码可以在大部分浏览器中直接使用，可以在配置选项的targets中指定要兼容的浏览器版本。 
+</code></pre>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined" rel="external nofollow noreferrer">RenXiaolan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://arenxiaolanz.github.io/archives/ad10b719.html">https://arenxiaolanz.github.io/archives/ad10b719.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://arenxiaolanz.github.io" target="_blank">Ren の Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/TypeScript/">TypeScript</a></div><div class="post_share"><div class="social-share" data-image="/img/ts.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/archives/add34d05.html"><img class="prev-cover" src="/img/ts.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">第二章：TS面向对象</div></div></a></div><div class="next-post pull-right"><a href="/archives/1c767582.html"><img class="next-cover" src="/img/1656068267464.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">解决GitHub报错问题</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/archives/add34d05.html" title="第二章：TS面向对象"><img class="cover" src="/img/ts.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-28</div><div class="title">第二章：TS面向对象</div></div></a></div><div><a href="/archives/22269933.html" title="第三章：使用TS实现贪吃蛇"><img class="cover" src="/img/ts.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-29</div><div class="title">第三章：使用TS实现贪吃蛇</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81NjUyMi8zMjk4NQ=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/bgyellow.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">RenXiaolan</div><div class="author-info__description">Gn💤</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/arenxiaolanz"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/arenxiaolanz" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/blog.renorchid.xyz" target="_blank" title="博客"><i class="fab fa-algolia"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">欢迎来到RenNino的博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-number">1.</span> <span class="toc-text">第一章 快速入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0%E3%80%81TypeScript%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">0、TypeScript简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81TypeScript-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">1.2.</span> <span class="toc-text">1、TypeScript 开发环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.3.</span> <span class="toc-text">2、基本类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#number"><span class="toc-number">1.4.</span> <span class="toc-text">number </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#boolean"><span class="toc-number">1.5.</span> <span class="toc-text">boolean </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#string"><span class="toc-number">1.6.</span> <span class="toc-text">string </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#any"><span class="toc-number">1.7.</span> <span class="toc-text">any </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#unknown"><span class="toc-number">1.8.</span> <span class="toc-text">unknown </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#void"><span class="toc-number">1.9.</span> <span class="toc-text">void </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#never"><span class="toc-number">1.10.</span> <span class="toc-text">never </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#object%EF%BC%88%E6%B2%A1%E5%95%A5%E7%94%A8%EF%BC%89"><span class="toc-number">1.11.</span> <span class="toc-text">object（没啥用） </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#array"><span class="toc-number">1.12.</span> <span class="toc-text">array </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tuple"><span class="toc-number">1.13.</span> <span class="toc-text">tuple </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#enum"><span class="toc-number">1.14.</span> <span class="toc-text">enum </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8D"><span class="toc-number">1.15.</span> <span class="toc-text">第一种 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E7%BC%96%E8%AF%91%E9%80%89%E9%A1%B9"><span class="toc-number">1.16.</span> <span class="toc-text">3、编译选项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81webpack"><span class="toc-number">1.17.</span> <span class="toc-text">4、webpack</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81Babel"><span class="toc-number">1.18.</span> <span class="toc-text">5、Babel</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/archives/954a621e.html" title="八、排序与搜索"><img src="/img/js.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="八、排序与搜索"/></a><div class="content"><a class="title" href="/archives/954a621e.html" title="八、排序与搜索">八、排序与搜索</a><time datetime="2022-08-16T09:51:13.000Z" title="发表于 2022-08-16 17:51:13">2022-08-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/954a621e.html" title="七、图结构"><img src="/img/js.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="七、图结构"/></a><div class="content"><a class="title" href="/archives/954a621e.html" title="七、图结构">七、图结构</a><time datetime="2022-08-14T09:51:13.000Z" title="发表于 2022-08-14 17:51:13">2022-08-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/954a621e.html" title="六、图解红黑树"><img src="/img/js.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="六、图解红黑树"/></a><div class="content"><a class="title" href="/archives/954a621e.html" title="六、图解红黑树">六、图解红黑树</a><time datetime="2022-08-12T09:51:13.000Z" title="发表于 2022-08-12 17:51:13">2022-08-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/954a621e.html" title="五、树结构"><img src="/img/js.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="五、树结构"/></a><div class="content"><a class="title" href="/archives/954a621e.html" title="五、树结构">五、树结构</a><time datetime="2022-08-10T09:51:13.000Z" title="发表于 2022-08-10 17:51:13">2022-08-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/954a621e.html" title="四、哈希表"><img src="/img/js.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="四、哈希表"/></a><div class="content"><a class="title" href="/archives/954a621e.html" title="四、哈希表">四、哈希表</a><time datetime="2022-08-08T09:51:13.000Z" title="发表于 2022-08-08 17:51:13">2022-08-08</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By RenXiaolan</div><div class="footer_custom_text"><span style="color:#999" onclick="window.open('https://beian.miit.gov.cn/#/Integrated/index/')"><a class="footer-a">晋 ICP 备 2022004193号-1 </a></span><br/><span style="color:#999" onclick="window.open('http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=14102202000136')"><a class="footer-a"><img class="upy entered loaded" align="absmiddle" src="/img/beianicon.png" data-ll-status="loaded">晋公网安备 14102202000136 号</a></span><br /></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script></div><script src="/js/aside_mobile.js"></script><div class="aplayer no-destroy" data-id="7386798372" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true"> </div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (true) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+  window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
