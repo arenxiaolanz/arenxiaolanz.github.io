@@ -1,0 +1,355 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Webpack学习笔记 | Ren の Blog</title><meta name="keywords" content="Webpack"><meta name="author" content="RenXiaolan"><meta name="copyright" content="RenXiaolan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Webpack学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Webpack学习笔记">
+<meta property="og:url" content="https://arenxiaolanz.github.io/archives/2040a2ec.html">
+<meta property="og:site_name" content="Ren の Blog">
+<meta property="og:description" content="Webpack学习笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://arenxiaolanz.github.io/img/webpack.jpg">
+<meta property="article:published_time" content="2023-12-21T02:05:06.000Z">
+<meta property="article:modified_time" content="2023-12-21T02:08:38.528Z">
+<meta property="article:author" content="RenXiaolan">
+<meta property="article:tag" content="Webpack">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://arenxiaolanz.github.io/img/webpack.jpg"><link rel="shortcut icon" href="/img/faviconyellow.png"><link rel="canonical" href="https://arenxiaolanz.github.io/archives/2040a2ec"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="code-O4DN1PdDUm"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":60,"position":"top","messagePrev":"该文章最后更新于","messageNext":"天前，文章内容可能已经过时，请优先查看最新文章！"},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: RenXiaolan","link":"链接: ","source":"来源: Ren の Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Webpack学习笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-12-21 10:08:38'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/cursors.css"><link rel="stylesheet" href="/css/bg_opacity.css"><link rel="stylesheet" href="/css/allfont.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/bgyellow.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">32</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-music"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-video"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/webpack.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Ren の Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-music"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-video"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Webpack学习笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-12-21T02:05:06.000Z" title="发表于 2023-12-21 10:05:06">2023-12-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-12-21T02:08:38.528Z" title="更新于 2023-12-21 10:08:38">2023-12-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Webpack学习笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="1、webpack是什么"><a href="#1、webpack是什么" class="headerlink" title="1、webpack是什么"></a>1、webpack是什么</h1><blockquote>
+<p>Webpack是一个前端模块化方案，更侧重于模块打包。我们可以把开发中的所有资源(图片，js,css,字体等)<br>都看成模块，通过loader和plugins对资源进行处理，打包成符合生产环境部署的前端资源</p>
+</blockquote>
+<ul>
+<li>初始化项目，得到package.json文件<br><code>npm init -y</code></li>
+<li>安装webpack, webpack-cli<br><code>npm install webpack webpack-cli</code></li>
+<li>使用webspack打包<br><code>npx webpack</code></li>
+<li>查看打包细节<br><code>npx webpack --stats detailed</code></li>
+<li>查看webpack终端命令有哪些<br><code>npx webpack --help</code></li>
+<li>命令行不方便，通过配置文件来配置 webpack.config.js，执行npx webpack就可以<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    <span class="attr">entry</span>: <span class="string">&#x27;./src/index.js&#x27;</span>, <span class="comment">//打包入口</span></span><br><span class="line">    <span class="attr">output</span>: &#123;</span><br><span class="line">        <span class="attr">filename</span>: <span class="string">&#x27;bundle.js&#x27;</span>, <span class="comment">// 打包后的文件名</span></span><br><span class="line">        <span class="attr">path</span>: path.resolve(__dirname, <span class="string">&#x27;./dist&#x27;</span>),<span class="comment">// 输出文件夹必须定义为绝对路径</span></span><br><span class="line">        <span class="attr">clean</span>: <span class="literal">true</span>, <span class="comment">// 打包前清理dist文件夹</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">mode</span>: <span class="string">&#x27;none&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="2、插件-Plugins"><a href="#2、插件-Plugins" class="headerlink" title="2、插件|Plugins"></a>2、插件|Plugins</h1><blockquote>
+<p>插件是webpack的核心功能。可以用于执行一些特定的任务，包括：打包优化，资源管理，注入环境变量等。<br>webpack自身也是构建于你在webpack配置中用到的相同的插件协同。可以完成<code>Loader</code>无法完成的其它任务。</p>
+</blockquote>
+<h3 id="01、使用HtmlWebpackPlugin"><a href="#01、使用HtmlWebpackPlugin" class="headerlink" title="01、使用HtmlWebpackPlugin"></a>01、使用HtmlWebpackPlugin</h3><ul>
+<li>作用： 一个服务于bundles的、用于简化HTML文件生成的插件</li>
+<li>安装： <code>yarn add --dev html-webpck-plugin</code></li>
+<li>配置：<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">    <span class="keyword">new</span> htmlWebpackPlugin(&#123;</span><br><span class="line">        <span class="attr">filename</span>: <span class="string">&#x27;app.html&#x27;</span>, <span class="comment">// 生成的文件名</span></span><br><span class="line">        <span class="attr">template</span>: path.resolve(__dirname, <span class="string">&#x27;./index.html&#x27;</span>), <span class="comment">// 源文件的绝对路径</span></span><br><span class="line">        <span class="attr">inject</span>: <span class="string">&#x27;body&#x27;</span> <span class="comment">// 设置所有资源文件注入模板的位置。可以设置的值 true|&#x27;head&#x27;|&#x27;body&#x27;|false，默认值为 true</span></span><br><span class="line">    &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h1 id="3、搭建开发环境"><a href="#3、搭建开发环境" class="headerlink" title="3、搭建开发环境"></a>3、搭建开发环境</h1></li>
+<li>设置mode： <code>mode: &#39;development&#39;, // 开发模式</code></li>
+<li>使用sourcemap： <code>devtool: &#39;inline-source-map&#39;, // 开发模式下追踪代码，生成的sourcemap文件，会内嵌在bundle.js中</code><blockquote>
+<p>当 webpack 打包源代码时，可能会很难追踪到 error(错误) 和 warning(警告) 在源代<br>码中的原始位置。例如，如果将三个源文件（ a.js , b.js 和 c.js ）打包到一个<br>bundle（ bundle.js ）中，而其中一个源文件包含一个错误，那么堆栈跟踪就会直<br>接指向到 bundle.js 。你可能需要准确地知道错误来自于哪个源文件，所以这种提<br>示这通常不会提供太多帮助。<br>为了更容易地追踪 error 和 warning，JavaScript 提供了 source maps 功能，可以<br>将编译后的代码映射回原始源代码。如果一个错误来自于 b.js ，source map 就会<br>明确的告诉你。</p>
+</blockquote>
+</li>
+<li>使用watch mode(观察者模式)： <code>npx webpack --watch</code><blockquote>
+<p>在 webpack 启动时添加 “watch” 参数。如果其中一个文件被更新，代码将<br>被重新编译，所以你不必再去手动运行整个构建</p>
+</blockquote>
+</li>
+<li>使用webapck-dev-server：</li>
+<li><ul>
+<li>安装： <code>npm install webpack-dev-server -D</code></li>
+</ul>
+</li>
+<li><ul>
+<li>配置：  <code>devServer: &#123; static: &#39;./dist&#39; &#125;</code><blockquote>
+<p>以上配置告知 webpack-dev-server ，将 dist 目录下的文件作为 web 服务的根目<br>录。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><ul>
+<li>运行： <code>npx webpack server --open</code><blockquote>
+<p>webpack-dev-server 在编译之后不会写入到任何输出文件。而是将 bundle 文<br>件保留在内存中，然后将它们 serve 到 server 中，就好像它们是挂载在 server<br>根路径上的真实文件一样。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="4、loader"><a href="#4、loader" class="headerlink" title="4、loader"></a>4、loader</h1><h3 id="1、loader是什么？"><a href="#1、loader是什么？" class="headerlink" title="1、loader是什么？"></a>1、loader是什么？</h3><blockquote>
+<p>Webpack 本身只能处理 JavaScript 模块，如果要处理其他类型的文件，就需要使用loader进行转换。</p>
+</blockquote>
+<blockquote>
+<p>Loader 可以理解为是模块和资源的转换器，它本身是一个函数，接受源文件作为参数，返回转换的结果。这样，我们就可以通过 require 来加载任何类型的模块或文件，比如 CoffeeScript、 JSX、 LESS 或图片。</p>
+</blockquote>
+<blockquote>
+<p>在Webpack中，Loader是一种用于转换不同类型文件的中间件。它们的主要任务是将源文件转换为模块，以便将它们添加到Webpack的依赖图中。<br>Loader将源文件作为输入，对其进行处理，然后输出转换后的文件。这些处理可以包括编译、压缩、转译、转换和其他自定义操作。最终，这些文件将被合并到Webpack的输出中。</p>
+</blockquote>
+<h3 id="2、安装loader"><a href="#2、安装loader" class="headerlink" title="2、安装loader"></a>2、安装loader</h3><p><code>npm install babel-loader style-loader css-loader file-loader --save-dev</code></p>
+<h3 id="3、配置loader"><a href="#3、配置loader" class="headerlink" title="3、配置loader"></a>3、配置loader</h3><p>loader有两个属性</p>
+<ol>
+<li>test 属性，识别出哪些文件会被转换。</li>
+<li>use 属性，定义出在进行转换时，应该使用哪个 loader。<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</span><br><span class="line">            use: [</span><br><span class="line">                &#123; <span class="attr">loader</span>: <span class="string">&#x27;style-loader&#x27;</span> &#125;,</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">loader</span>: <span class="string">&#x27;css-loader&#x27;</span>,</span><br><span class="line">                    <span class="attr">options</span>: &#123;</span><br><span class="line">                        <span class="attr">modules</span>: <span class="literal">true</span>,</span><br><span class="line">                    &#125;,</span><br><span class="line">                &#125;,</span><br><span class="line">                &#123; <span class="attr">loader</span>: <span class="string">&#x27;sass-loader&#x27;</span> &#125;,</span><br><span class="line">            ],</span><br><span class="line">        &#125;,</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>loader 从右到左（或从下到上）地取值(evaluate)/执行(execute)。在下面的示例中，从 sass-loader 开始执行，然后继续执行 css-loader，最后以 style-loader 为结束。</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="4、loader特性"><a href="#4、loader特性" class="headerlink" title="4、loader特性"></a>4、loader特性</h3><ul>
+<li>loader 支持链式调用。链中的每个 loader 会将转换应用在已处理过的资源上。一组链式的 loader 将按照相反的顺序执行。链中的第一个 loader 将其结果（也就是应用过转换后的资源）传递给下一个 loader，依此类推。最后，链中的最后一个 loader，返回 webpack 所期望的 JavaScript。</li>
+<li>loader 可以是同步的，也可以是异步的。</li>
+<li>loader 运行在 Node.js 中，并且能够执行任何操作。</li>
+<li>loader 可以通过 options 对象配置（仍然支持使用 query 参数来设置选项，但是这种方式已被废弃）。</li>
+<li>除了常见的通过 package.json 的 main 来将一个 npm 模块导出为 loader，还可以在 module.rules 中使用 loader 字段直接引用一个模块。</li>
+<li>插件(plugin)可以为loader带来更多特性。</li>
+<li>loader 能够产生额外的任意文件。<blockquote>
+<p>可以通过 loader 的预处理函数，为 JavaScript 生态系统提供更多能力。用户现在可以更加灵活地引入细粒度逻辑，例如：压缩、打包、语言转译（或编译）和 更多其他特性。</p>
+</blockquote>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined" rel="external nofollow noreferrer">RenXiaolan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://arenxiaolanz.github.io/archives/2040a2ec.html">https://arenxiaolanz.github.io/archives/2040a2ec.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://arenxiaolanz.github.io" target="_blank">Ren の Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Webpack/">Webpack</a></div><div class="post_share"><div class="social-share" data-image="/img/webpack.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/archives/f665e676.html"><img class="prev-cover" src="/img/bgwhitefish.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">【react-draggable实际应用】实现左右拖拽</div></div></a></div><div class="next-post pull-right"><a href="/archives/65236d92.html"><img class="next-cover" src="/img/ts.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">typescript中常用符号</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81NjUyMi8zMjk4NQ=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/bgyellow.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">RenXiaolan</div><div class="author-info__description">Gn💤</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">32</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/arenxiaolanz"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/arenxiaolanz" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:arenxiaolanz@gmail.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://blog.csdn.net/m0_56542349" rel="external nofollow noreferrer" target="_blank" title="博客"><i class="fab fa-algolia"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">欢迎来到RenNino的博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1%E3%80%81webpack%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.</span> <span class="toc-text">1、webpack是什么</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2%E3%80%81%E6%8F%92%E4%BB%B6-Plugins"><span class="toc-number">2.</span> <span class="toc-text">2、插件|Plugins</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#01%E3%80%81%E4%BD%BF%E7%94%A8HtmlWebpackPlugin"><span class="toc-number">2.0.1.</span> <span class="toc-text">01、使用HtmlWebpackPlugin</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3%E3%80%81%E6%90%AD%E5%BB%BA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="toc-number">3.</span> <span class="toc-text">3、搭建开发环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4%E3%80%81loader"><span class="toc-number">4.</span> <span class="toc-text">4、loader</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81loader%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">4.0.1.</span> <span class="toc-text">1、loader是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%AE%89%E8%A3%85loader"><span class="toc-number">4.0.2.</span> <span class="toc-text">2、安装loader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E9%85%8D%E7%BD%AEloader"><span class="toc-number">4.0.3.</span> <span class="toc-text">3、配置loader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81loader%E7%89%B9%E6%80%A7"><span class="toc-number">4.0.4.</span> <span class="toc-text">4、loader特性</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/archives/f665e676.html" title="【react-draggable实际应用】实现左右拖拽"><img src="/img/bgwhitefish.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【react-draggable实际应用】实现左右拖拽"/></a><div class="content"><a class="title" href="/archives/f665e676.html" title="【react-draggable实际应用】实现左右拖拽">【react-draggable实际应用】实现左右拖拽</a><time datetime="2023-12-21T02:40:43.000Z" title="发表于 2023-12-21 10:40:43">2023-12-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/2040a2ec.html" title="Webpack学习笔记"><img src="/img/webpack.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Webpack学习笔记"/></a><div class="content"><a class="title" href="/archives/2040a2ec.html" title="Webpack学习笔记">Webpack学习笔记</a><time datetime="2023-12-21T02:05:06.000Z" title="发表于 2023-12-21 10:05:06">2023-12-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/65236d92.html" title="typescript中常用符号"><img src="/img/ts.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="typescript中常用符号"/></a><div class="content"><a class="title" href="/archives/65236d92.html" title="typescript中常用符号">typescript中常用符号</a><time datetime="2022-10-01T02:02:04.000Z" title="发表于 2022-10-01 10:02:04">2022-10-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/29333a4f.html" title="typescript中变量后加个问号"><img src="/img/ts.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="typescript中变量后加个问号"/></a><div class="content"><a class="title" href="/archives/29333a4f.html" title="typescript中变量后加个问号">typescript中变量后加个问号</a><time datetime="2022-09-27T02:02:04.000Z" title="发表于 2022-09-27 10:02:04">2022-09-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/46390b34.html" title="git操作"><img src="/img/github.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="git操作"/></a><div class="content"><a class="title" href="/archives/46390b34.html" title="git操作">git操作</a><time datetime="2022-09-24T09:51:13.000Z" title="发表于 2022-09-24 17:51:13">2022-09-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By RenXiaolan</div><div class="footer_custom_text"><span style="color:#999" onclick="window.open('https://beian.miit.gov.cn/#/Integrated/index/')"><a class="footer-a">晋 ICP 备 2022004193号-1 </a></span><br/><span style="color:#999" onclick="window.open('http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=14102202000136')"><a class="footer-a"><img class="upy entered loaded" align="absmiddle" src="/img/beianicon.png" data-ll-status="loaded">晋公网安备 14102202000136 号</a></span><br /></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script></div><script src="/js/aside_mobile.js"></script><div class="aplayer no-destroy" data-id="7386798372" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true"> </div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (true) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+  window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
